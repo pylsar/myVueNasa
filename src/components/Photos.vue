@@ -6,6 +6,9 @@
     </form>
     <button v-show="this.pics.length !== 0" @click="prev()">prev</button>
     <button v-show="this.pics.length !== 0" @click="next()">next</button>
+    <div v-show="this.pics.length === 0" class="photos__help">
+      <span>Введите корректный запрос( например: sun, moon, rocket etc.)</span>
+    </div>
     <div v-if="pics" class="nasa__box">
       <div v-for="(pic, index) in pics" :key="index" class="nasa__img">
         <img
@@ -15,9 +18,7 @@
         />
       </div>
     </div>
-    <div v-show="this.pics.length === 0">
-      <span>Введите корректный запрос( например: sun, moon, rocket etc.)</span>
-    </div>
+    
   </div>
 </template>
 <script>
@@ -63,19 +64,23 @@ export default {
 <style lang="scss">
 .photos {
   width: 50%;
+  height: 80vh;
+  &__help{
+    margin-top: 20px;
+  }
 }
 .nasa__box {
   display: flex;
   overflow-x: hidden;
+  width: 100%;
+  height: 80vh;
 }
 .nasa__img {
   min-width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  max-height: 100%;
   & img {
     width: 100%;
+    object-fit: cover;
   }
 }
 </style>

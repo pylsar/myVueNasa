@@ -1,22 +1,22 @@
 <template>
   <div class="list">
     <div class="list__items">
-      <span class="cell">Name</span>
+      <span class="cell cell--head">Name</span>
       <div class="cell"> 
-        <span>km min</span>
+        <span class="cell--head-sort">km min</span>
         <div>
-          <button @click="sortMinByMin">min</button>
-          <button @click="sortMinByMax">max</button>
+          <button @click="sortMinByMin" class="cell__btn">min</button>
+          <button @click="sortMinByMax" class="cell__btn">max</button>
         </div>
       </div>
       <div class="cell"> 
-        <span>km max</span>
+        <span class="cell--head-sort">km max</span>
         <div>
-          <button @click="sortMaxByMin">min</button>
-          <button @click="sortMaxByMax">max</button>
+          <button @click="sortMaxByMin" class="cell__btn">min</button>
+          <button @click="sortMaxByMax" class="cell__btn">max</button>
         </div>
       </div>
-      <span class="cell">date</span>
+      <span class="cell cell--head">date</span>
     </div>
     <div v-for="(item, index) in paginatedData" :key="index" class="list__item">
       <div class="cell">
@@ -36,8 +36,8 @@
         <span>{{ item.close_approach_data[0].close_approach_date }}</span>
       </div>
     </div>
-    <button @click="prevPage" :disabled="pageNumber === 0">влево</button>
-    <button @click="nextPage" :disabled="pageNumber >= pageCount - 1">
+    <button @click="prevPage" :disabled="pageNumber === 0" class="list__pagination">влево</button>
+    <button @click="nextPage" :disabled="pageNumber >= pageCount - 1" class="list__pagination">
       вправо
     </button>
   </div>
@@ -95,25 +95,58 @@ export default {
 <style lang="scss">
 .list {
   width: 50%;
-}
-
-.list__items {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: left;
-}
-.list__item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: left;
+  height: 80vh;
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+  &__pagination{
+    width: 70px;
+    height: 30px;
+    outline: none;
+    border: none;
+    background: gray;
+    cursor: pointer;
+    margin-right: 20px;
+  }
 }
 .cell {
-  border: 1px solid red;
   min-width: 100px;
-  width: 100px;
+  width: 25%;
   height: 40px;
   font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  &__btn{
+    width: 40%;
+    height: 20px;
+    outline: none;
+    border: none;
+    background: gray;
+    cursor: pointer;
+    &:first-child{
+      margin-right: 10%;
+    }
+  }
+  &--head{
+    height: 40px;
+    font-weight: 700;
+    text-align: center;
+  }
+  &--head-sort{
+    height: 20px;
+    font-weight: 700;
+    text-align: center;
+  }
 }
 </style>

@@ -19,9 +19,15 @@ export default {
 
 <style lang="scss">
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 #app {
   display: flex;
+  width: 96%;
+  margin: 0 auto;
+  padding-top: 20px;
+  border: 1px solid red;
 }
 </style>
