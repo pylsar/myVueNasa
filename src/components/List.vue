@@ -2,8 +2,20 @@
   <div class="list">
     <div class="list__items">
       <span class="cell">Name</span>
-      <span class="cell">km min</span>
-      <span class="cell">km max</span>
+      <div class="cell"> 
+        <span>km min</span>
+        <div>
+          <button @click="sortMinByMin">min</button>
+          <button @click="sortMinByMax">max</button>
+        </div>
+      </div>
+      <div class="cell"> 
+        <span>km max</span>
+        <div>
+          <button @click="sortMaxByMin">min</button>
+          <button @click="sortMaxByMax">max</button>
+        </div>
+      </div>
       <span class="cell">date</span>
     </div>
     <div v-for="(item, index) in paginatedData" :key="index" class="list__item">
@@ -62,6 +74,18 @@ export default {
     prevPage() {
       this.pageNumber--;
     },
+    sortMinByMin(){
+      return this.ITEMSDATA.sort((a,b) => a.estimated_diameter.kilometers.estimated_diameter_min - b.estimated_diameter.kilometers.estimated_diameter_min)
+    },
+    sortMinByMax(){
+      return this.ITEMSDATA.sort((a,b) => b.estimated_diameter.kilometers.estimated_diameter_min - a.estimated_diameter.kilometers.estimated_diameter_min)
+    },
+    sortMaxByMin(){
+      return this.ITEMSDATA.sort((a,b) => a.estimated_diameter.kilometers.estimated_diameter_max - b.estimated_diameter.kilometers.estimated_diameter_max)
+    },
+    sortMaxByMax(){
+      return this.ITEMSDATA.sort((a,b) => b.estimated_diameter.kilometers.estimated_diameter_max - a.estimated_diameter.kilometers.estimated_diameter_max)
+    }
   },
   mounted() {
     this.$store.dispatch("GET_ITEMS_FROM_API");
