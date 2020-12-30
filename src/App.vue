@@ -23,11 +23,13 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  background: skyblue;
+}
 #app {
   display: flex;
   width: 96%;
   margin: 0 auto;
   padding-top: 20px;
-  border: 1px solid red;
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div class="photos">
     <form @submit.prevent="getPics()">
-      <input type="text" v-model="query" />
-      <button>find</button>
+      <input type="text" v-model="query" class="photos__search"/>
+      <button class="photos_search-btn">find</button>
     </form>
     <button v-show="this.pics.length !== 0" @click="prev()">prev</button>
     <button v-show="this.pics.length !== 0" @click="next()">next</button>
@@ -67,7 +67,12 @@ export default {
   height: 80vh;
   &__help{
     margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 20px;
   }
+  &__search{}
+  &__search-btn{}
 }
 .nasa__box {
   display: flex;

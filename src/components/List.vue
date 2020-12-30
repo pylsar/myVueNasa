@@ -114,7 +114,7 @@ export default {
     height: 30px;
     outline: none;
     border: none;
-    background: gray;
+    background: #00CC66;
     cursor: pointer;
     margin-right: 20px;
   }
@@ -132,11 +132,10 @@ export default {
     height: 20px;
     outline: none;
     border: none;
-    background: gray;
+    background: #00CC66;
     cursor: pointer;
-    &:first-child{
-      margin-right: 10%;
-    }
+    margin-right: 5%;
+    margin-left: 5%;
   }
   &--head{
     height: 40px;
