@@ -1,11 +1,13 @@
 <template>
   <div class="photos">
-    <form @submit.prevent="getPics()">
+    <form @submit.prevent="getPics()" class="photos__form">
       <input type="text" v-model="query" class="photos__search"/>
-      <button class="photos_search-btn">find</button>
+      <button class="photos__search-btn">find</button>
     </form>
-    <button v-show="this.pics.length !== 0" @click="prev()">prev</button>
-    <button v-show="this.pics.length !== 0" @click="next()">next</button>
+    <div class="photos__subform">
+      <button v-show="this.pics.length !== 0" @click="prev()" class="photos__search-subbtn">prev</button>
+      <button v-show="this.pics.length !== 0" @click="next()" class="photos__search-subbtn">next</button>
+    </div>
     <div v-show="this.pics.length === 0" class="photos__help">
       <span>Введите корректный запрос( например: sun, moon, rocket etc.)</span>
     </div>
@@ -71,12 +73,45 @@ export default {
     padding-right: 20px;
     font-size: 20px;
   }
-  &__search{}
-  &__search-btn{}
+  &__form{
+    width: 300px;
+    height: 40px;
+    margin: 0 auto;
+  }
+  &__search{
+    width: 260px;
+    height: 100%;
+    outline: none;
+    padding-left: 5px;
+    background: none;
+    border: none;
+    border: 1px solid #00CC66;
+  }
+  &__search-btn{
+    width: 40px;
+    height: 100%;
+    outline: none;
+    border: none;
+    background: #00CC66;
+    cursor: pointer;
+  }
+  &__subform{
+    width: 300px;
+    margin: 0 auto;
+  }
+  &__search-subbtn{
+    width: 150px;
+    cursor: pointer;
+    background: none;
+    border: 1px solid #00CC66;
+    outline: none;
+    margin-bottom: 20px;
+  }
 }
 .nasa__box {
   display: flex;
   overflow-x: hidden;
+  overflow-y: hidden;
   width: 100%;
   height: 80vh;
 }
@@ -86,6 +121,12 @@ export default {
   & img {
     width: 100%;
     object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .photos {
+    width: 100%;
   }
 }
 </style>

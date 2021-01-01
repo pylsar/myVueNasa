@@ -36,10 +36,12 @@
         <span>{{ item.close_approach_data[0].close_approach_date }}</span>
       </div>
     </div>
-    <button @click="prevPage" :disabled="pageNumber === 0" class="list__pagination">влево</button>
-    <button @click="nextPage" :disabled="pageNumber >= pageCount - 1" class="list__pagination">
-      вправо
+    <div class="list__btn-bottom">
+      <button @click="prevPage" :disabled="pageNumber === 0" class="list__pagination">left</button>
+      <button @click="nextPage" :disabled="pageNumber >= pageCount - 1" class="list__pagination">
+      right
     </button>
+    </div>
   </div>
 </template>
 
@@ -117,6 +119,9 @@ export default {
     background: #00CC66;
     cursor: pointer;
     margin-right: 20px;
+    &:last-child{
+      margin-right: 0;
+    }
   }
 }
 .cell {
@@ -146,6 +151,21 @@ export default {
     height: 20px;
     font-weight: 700;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .list {
+    width: 100%;
+    height: 50vh;
+    &__btn-bottom{
+      width: 160px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .cell{
+    max-width: 100px;
   }
 }
 </style>

@@ -32,4 +32,13 @@ body{
   margin: 0 auto;
   padding-top: 20px;
 }
+
+
+
+@media screen and (max-width: 860px) {
+#app {
+    flex-direction: column;
+  }
+}
+
 </style>
